@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Rangila Burger</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --red: #D90429;
+            --yellow: #FFC300;
+            --black: #0d0d0d;
+            --dark-gray: #1a1a1a;
+            --white: #ffffff;
+            --pink: #D70F64;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; z-index: 1000; background: rgba(13, 13, 13, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo-group { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
+        .logo-icon { font-size: 1.5rem; color: var(--red); }
+        .logo-text { font-family: 'Anton', sans-serif; font-size: 1.5rem; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-link { text-decoration: none; color: #ccc; font-weight: 500; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+        .nav-link:hover { color: var(--yellow); }
+        .nav-cta { padding: 8px 20px; background: var(--white); color: var(--black); font-weight: bold; border-radius: 2px; text-transform: uppercase; text-decoration: none; transition: 0.3s; }
+        .nav-cta:hover { background: var(--yellow); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
+        
+        /* Mobile Menu */
+        .mobile-menu { position: fixed; top: 0; right: 0; width: 100%; height: 100vh; background: var(--black); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 40px; z-index: 999; transform: translateX(100%); transition: transform 0.4s ease-in-out; }
+        .mobile-menu.active { transform: translateX(0); }
+        .mobile-link { font-family: 'Anton', sans-serif; font-size: 2rem; color: white; text-decoration: none; }
+        .close-btn { position: absolute; top: 25px; right: 25px; font-size: 2rem; cursor: pointer; }
+
+        /* --- HEADER --- */
+        .page-header {
+            height: 50vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), var(--black)), url('conta.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 70px;
+        }
+        .page-title { font-size: 5rem; text-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;}
+
+        /* --- CONTACT CARDS (SAFE MODE) --- */
+        .contact-section { padding: 80px 5%; background: var(--black); }
+        .contact-flex-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1300px; margin: 0 auto; }
+
+        .contact-card {
+            background: #151515; padding: 50px 30px; border-radius: 8px; text-align: center; border-top: 5px solid var(--red);
+            transition: transform 0.3s; flex: 1 1 300px; max-width: 400px; display: flex; flex-direction: column; align-items: center;
+        }
+        .contact-card:hover { transform: translateY(-10px); background: #1a1a1a; }
+
+        .card-icon { font-size: 3rem; margin-bottom: 25px; color: var(--white); }
+        .card-title { font-size: 2rem; margin-bottom: 15px; color: var(--yellow); font-family: 'Oswald'; }
+        .card-text { color: #aaa; margin-bottom: 30px; line-height: 1.6; font-size: 1rem; max-width: 300px; }
+        
+        .card-btn {
+            display: inline-block; padding: 15px 35px; border: 1px solid rgba(255,255,255,0.2); color: white;
+            text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s; margin-top: auto;
+        }
+
+        .btn-order:hover { background: var(--pink); border-color: var(--pink); }
+        .btn-review:hover { background: #4285F4; border-color: #4285F4; }
+        .btn-insta:hover { background: #E1306C; border-color: #E1306C; }
+
+        /* --- MAP SECTION --- */
+        .map-section { display: flex; flex-wrap: wrap; background: #111; margin-top: 50px; }
+        .map-info { flex: 1; padding: 80px 5%; min-width: 300px; display: flex; flex-direction: column; justify-content: center; }
+        .map-frame { flex: 1; min-width: 300px; min-height: 500px; filter: grayscale(100%) invert(92%) contrast(83%); }
+
+        .info-row { display: flex; gap: 20px; margin-bottom: 30px; align-items: flex-start;}
+        .info-icon { width: 50px; height: 50px; background: var(--red); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; border-radius: 50%; flex-shrink: 0; }
+        .info-content h4 { font-family: 'Oswald'; font-size: 1.3rem; margin-bottom: 5px; color: var(--white); }
+        .info-content p { color: #888; font-size: 1.1rem; line-height: 1.5; }
+
+        /* --- FOOTER --- */
+        footer { text-align: center; padding: 80px 20px; background-color: #050505; color: #666; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .page-title { font-size: 3rem; }
+            .map-section { flex-direction: column; }
+            .contact-flex-container { flex-direction: column; align-items: center; }
+            .contact-card { width: 100%; max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-group">
+            <i class="fas fa-burger logo-icon"></i>
+            <span class="logo-text">RANGILA BURGER</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="menu.html" class="nav-link">Full Menu</a>
+            <a href="#" class="nav-cta">Contact Us</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="close-btn" onclick="toggleMenu()">×</div>
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="menu.html" class="mobile-link">Full Menu</a>
+        <a href="#" class="mobile-link">Contact Us</a>
+    </div>
+
+    <header class="page-header">
+        <h1 class="page-title">TALK TO US</h1>
+    </header>
+
+    <section class="contact-section">
+        <div class="contact-flex-container">
+            <div class="contact-card">
+                <i class="fas fa-motorcycle card-icon" style="color: var(--pink);"></i>
+                <h3 class="card-title">HUNGRY?</h3>
+                <p class="card-text">Don't let the cravings win. Get the Sudani Sandwich delivered to your doorstep while it's hot.</p>
+                <a href="https://www.foodpanda.pk/restaurant/v7rb/rangila-burger" target="_blank" class="card-btn btn-order">Order on Foodpanda</a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-star card-icon" style="color: var(--yellow);"></i>
+                <h3 class="card-title">LOVE US?</h3>
+                <p class="card-text">Did the first bite hit the spot? Tell the world. Leave us a review and become a Legend.</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Rangila+Burger+Mall+Road+Lahore" target="_blank" class="card-btn btn-review">Rate on Google</a>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-instagram card-icon" style="color: #E1306C;"></i>
+                <h3 class="card-title">STALK US?</h3>
+                <p class="card-text">Slide into our DMs for catering, complaints, or just to send us burger memes.</p>
+                <a href="https://www.instagram.com/rangila_burger" target="_blank" class="card-btn btn-insta">@rangilaburger</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="map-info">
+            <h2 style="font-size: 3rem; margin-bottom: 40px; line-height: 1;">FIND THE <br><span style="color:var(--red)">FLAVOR</span></h2>
+            
+            <div class="info-row">
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="info-content">
+                    <h4>THE NEW SPOT</h4>
+                    <p>Ground Floor, Imtiaz Plaza,<br>85-The Shahrah-e-Quaid-e-Azam (Mall Road), Lahore.</p>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-icon"><i class="fas fa-phone"></i></div>
+                <div class="info-content">
+                    <h4>CALL US DIRECT</h4>
+                    <p>+92 300 4240422<br>042 36367529</p>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-icon"><i class="fas fa-clock"></i></div>
+                <div class="info-content">
+                    <h4>OPENING HOURS</h4>
+                    <p>Mon-Sat: 12:00 PM - 02:00 AM<br>Sunday: 01:00 PM - 02:00 AM</p>
+                </div>
+            </div>
+        </div>
+        
+        <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3400.0!2d74.0!3d31.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904a2c0c9b0e7%3A0x6b8f3c3a4f3b5e0!2sRangila%20Burger!5e0!3m2!1sen!2s!4v1600000000000!5m2!1sen!2s" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <footer>
+        <span style="font-family: 'Anton'; font-size: 2rem; color: white;">RANGILA</span>
+        <p>© 2026 Rangila Burger. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+    </script>
+</body>
+</html>
