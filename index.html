@@ -1,489 +1,515 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rangila Burger | Since 1985</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* --- RESET & VARIABLES --- */
-        :root {
-            --red: #D90429;
-            --yellow: #FFC300;
-            --black: #0d0d0d;
-            --dark-gray: #1a1a1a;
-            --white: #ffffff;
-            --pink: #D70F64;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background-color: var(--black);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rangila Burger | Since 1985</title>
 
-        h1, h2, h3 { font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; /* Slight adjustment for logo size */
-            z-index: 1000;
-            background: rgba(13, 13, 13, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+<style>
+/* --- RESET & VARIABLES --- */
+:root {
+--red: #D90429;
+--yellow: #FFC300;
+--black: #0d0d0d;
+--dark-gray: #1a1a1a;
+--white: #ffffff;
+--pink: #D70F64;
+}
 
-        .logo-group { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
-        
-        /* NEW LOGO STYLING */
-        .logo-img {
-            width: 55px;           /* Adjust size here */
-            height: 55px;          /* Keep height same as width */
-            border-radius: 50%;    /* Makes it a circle */
-            object-fit: cover;     /* Ensures image doesn't stretch */
-            border: 2px solid var(--red); /* Optional: Adds a cool border */
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .logo-text { font-family: 'Anton', sans-serif; font-size: 1.5rem; letter-spacing: 1px; }
+body {
+background-color: var(--black);
+color: var(--white);
+font-family: 'Inter', sans-serif;
+overflow-x: hidden;
+}
 
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-link { text-decoration: none; color: #ccc; font-weight: 500; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
-        .nav-link:hover { color: var(--yellow); }
-        .nav-cta { padding: 8px 20px; background: var(--white); color: var(--black); font-weight: bold; border-radius: 2px; text-transform: uppercase; text-decoration: none; transition: 0.3s; }
-        .nav-cta:hover { background: var(--yellow); }
+h1, h2, h3 { font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
-        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
+/* --- NAVIGATION --- */
+nav {
+position: fixed;
+top: 0; width: 100%;
+display: flex; justify-content: space-between; align-items: center;
+padding: 15px 5%; /* Slight adjustment for logo size */
+z-index: 1000;
+background: rgba(13, 13, 13, 0.95);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(255,255,255,0.1);
+}
 
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed; top: 0; right: 0; width: 100%; height: 100vh;
-            background: var(--black); display: flex; flex-direction: column; justify-content: center; align-items: center;
-            gap: 40px; z-index: 999; transform: translateX(100%); transition: transform 0.4s ease-in-out;
-        }
-        .mobile-menu.active { transform: translateX(0); }
-        .mobile-link { font-family: 'Anton', sans-serif; font-size: 2rem; color: white; text-decoration: none; }
-        .close-btn { position: absolute; top: 25px; right: 25px; font-size: 2rem; cursor: pointer; }
+.logo-group { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
 
-        /* --- HERO --- */
-        .hero {
-            height: 85vh; display: flex; align-items: center; justify-content: center;
-            position: relative; overflow: hidden; margin-top: 70px;
-        }
-        .hero-img-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; scale: 1.2; }
-        .hero-content { text-align: center; z-index: 2; }
-        .hero-title { font-size: 10vw; line-height: 0.9; margin-bottom: 20px; transform: translateY(50px); opacity: 0; }
-        .hero-subtitle { font-size: 1.2rem; letter-spacing: 5px; text-transform: uppercase; color: var(--yellow); opacity: 0; margin-bottom: 15px; display: block; }
+/* NEW LOGO STYLING */
+.logo-img {
+width: 55px; /* Adjust size here */
+height: 55px; /* Keep height same as width */
+border-radius: 50%; /* Makes it a circle */
+object-fit: cover; /* Ensures image doesn't stretch */
+border: 2px solid var(--red); /* Optional: Adds a cool border */
+}
 
-        /* --- MARQUEE --- */
-        .marquee-container {
-            background: var(--red); padding: 15px 0; overflow: hidden; white-space: nowrap;
-            position: relative; z-index: 10; transform: rotate(-1deg) scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .marquee-content { display: inline-block; }
-        .marquee-item { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.5rem; margin: 0 30px; color: white; text-transform: uppercase; }
+.logo-text { font-family: 'Anton', sans-serif; font-size: 1.5rem; letter-spacing: 1px; }
 
-        /* --- ABOUT SECTION --- */
-        .about-section {
-            padding: 120px 10%; background-color: var(--black); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-        }
-        .about-text h2 { font-size: 4rem; line-height: 1; margin-bottom: 30px; color: var(--white); }
-        .about-text p { font-size: 1.1rem; line-height: 1.6; color: #aaa; margin-bottom: 20px; }
-        .about-highlight { color: var(--red); font-weight: bold; font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
-        .about-img {
-            width: 100%; height: 500px; 
-            /* Make sure 'unnamed (1).webp' exists in your folder */
-            background: url('unnamed (1).webp') center/cover no-repeat;
-            border-radius: 5px; filter: grayscale(100%); transition: 0.5s;
-        }
-        .about-img:hover { filter: grayscale(0%); }
+.nav-links { display: flex; gap: 30px; align-items: center; }
+.nav-link { text-decoration: none; color: #ccc; font-weight: 500; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+.nav-link:hover { color: var(--yellow); }
+.nav-cta { padding: 8px 20px; background: var(--white); color: var(--black); font-weight: bold; border-radius: 2px; text-transform: uppercase; text-decoration: none; transition: 0.3s; }
+.nav-cta:hover { background: var(--yellow); }
 
-        /* --- CROWD FAVORITES (FLEXBOX FIX) --- */
-        .menu-preview {
-            padding: 100px 5%;
-            background: #111;
-        }
+.hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
 
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 3.5rem; color: white; }
-        .section-header p { color: #888; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+/* Mobile Menu */
+.mobile-menu {
+position: fixed; top: 0; right: 0; width: 100%; height: 100vh;
+background: var(--black); display: flex; flex-direction: column; justify-content: center; align-items: center;
+gap: 40px; z-index: 999; transform: translateX(100%); transition: transform 0.4s ease-in-out;
+}
+.mobile-menu.active { transform: translateX(0); }
+.mobile-link { font-family: 'Anton', sans-serif; font-size: 2rem; color: white; text-decoration: none; }
+.close-btn { position: absolute; top: 25px; right: 25px; font-size: 2rem; cursor: pointer; }
 
-        .menu-flex-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            width: 100%;
-        }
+/* --- HERO --- */
+.hero {
+height: 85vh; display: flex; align-items: center; justify-content: center;
+position: relative; overflow: hidden; margin-top: 70px;
+}
+.hero-img-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; scale: 1.2; }
+.hero-content { text-align: center; z-index: 2; }
+.hero-title { font-size: 10vw; line-height: 0.9; margin-bottom: 20px; transform: translateY(50px); opacity: 0; }
+.hero-subtitle { font-size: 1.2rem; letter-spacing: 5px; text-transform: uppercase; color: var(--yellow); opacity: 0; margin-bottom: 15px; display: block; }
 
-        .menu-card {
-            background: #1a1a1a;
-            border-bottom: 4px solid var(--red);
-            flex: 1 1 300px; /* Grow, Shrink, Basis */
-            max-width: 400px; /* Don't get too wide */
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s;
-        }
+/* --- MARQUEE --- */
+.marquee-container {
+background: var(--red); padding: 15px 0; overflow: hidden; white-space: nowrap;
+position: relative; z-index: 10; transform: rotate(-1deg) scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.marquee-content { display: inline-block; }
+.marquee-item { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.5rem; margin: 0 30px; color: white; text-transform: uppercase; }
 
-        .menu-card:hover { transform: translateY(-10px); }
+/* --- ABOUT SECTION --- */
+.about-section {
+padding: 120px 10%; background-color: var(--black); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.about-text h2 { font-size: 4rem; line-height: 1; margin-bottom: 30px; color: var(--white); }
+.about-text p { font-size: 1.1rem; line-height: 1.6; color: #aaa; margin-bottom: 20px; }
+.about-highlight { color: var(--red); font-weight: bold; font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+.about-img {
+width: 100%; height: 500px;
+background: url('unnamed (1).webp') center/cover no-repeat;
+border-radius: 5px; filter: grayscale(100%); transition: 0.5s;
+}
+.about-img:hover { filter: grayscale(0%); }
 
-        .menu-img-box {
-            height: 250px;
-            width: 100%;
-            overflow: hidden;
-        }
-        .menu-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .menu-card:hover .menu-img-box img { transform: scale(1.1); }
+/* --- CROWD FAVORITES --- */
+.menu-preview {
+padding: 100px 5%;
+background: #111;
+}
 
-        .menu-info { padding: 25px; }
-        .menu-title { font-size: 1.5rem; margin-bottom: 5px; font-family: 'Oswald'; }
-        .menu-price { color: var(--yellow); font-weight: bold; font-size: 1.2rem; display: block; margin-bottom: 10px; }
-        .menu-desc { color: #aaa; font-size: 0.9rem; line-height: 1.5; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header h2 { font-size: 3.5rem; color: white; }
+.section-header p { color: #888; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
 
-        /* BUTTON FIX */
-        .view-all-container {
-            text-align: center;
-            margin-top: 60px;
-            width: 100%;
-        }
+.menu-flex-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 30px;
+width: 100%;
+}
 
-        .view-all-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            border: 2px solid var(--red);
-            color: var(--white);
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+.menu-card {
+background: #1a1a1a;
+border-bottom: 4px solid var(--red);
+flex: 1 1 300px;
+max-width: 400px;
+display: flex;
+flex-direction: column;
+transition: transform 0.3s;
+}
 
-        .view-all-btn:hover {
-            background: var(--red);
-            color: white;
-            box-shadow: 0 0 20px rgba(217, 4, 41, 0.4);
-        }
+.menu-card:hover { transform: translateY(-10px); }
 
-        /* --- REVIEWS --- */
-        .reviews-section { padding: 100px 0; background: var(--dark-gray); overflow: hidden; }
-        .review-track-wrapper { width: 100%; overflow-x: hidden; }
-        .review-track { display: flex; gap: 30px; padding-left: 5%; width: max-content; }
-        .review-card { background: #222; padding: 40px; min-width: 350px; border-left: 4px solid var(--red); }
-        .stars { color: var(--yellow); margin-bottom: 15px; }
-        .review-text { font-size: 1.1rem; line-height: 1.5; font-style: italic; color: #ddd; }
-        .reviewer { margin-top: 20px; font-weight: bold; font-family: 'Oswald', sans-serif; letter-spacing: 1px; color: var(--white); }
+.menu-img-box {
+height: 250px;
+width: 100%;
+overflow: hidden;
+}
+.menu-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.menu-card:hover .menu-img-box img { transform: scale(1.1); }
 
-        /* --- STATS --- */
-        .stats-section { padding: 80px 5%; background: linear-gradient(to right, #111, #0a0a0a); border-top: 1px solid #333; border-bottom: 1px solid #333; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; text-align: center; }
-        .stat-item h3 { font-size: 4rem; color: var(--red); margin-bottom: 10px; line-height: 1; }
-        .stat-item p { font-family: 'Oswald', sans-serif; letter-spacing: 2px; color: #888; font-size: 1.1rem; text-transform: uppercase; }
+.menu-info { padding: 25px; }
+.menu-title { font-size: 1.5rem; margin-bottom: 5px; font-family: 'Oswald'; }
+.menu-price { color: var(--yellow); font-weight: bold; font-size: 1.2rem; display: block; margin-bottom: 10px; }
+.menu-desc { color: #aaa; font-size: 0.9rem; line-height: 1.5; }
 
-        /* --- DELIVERY --- */
-        .delivery-section {
-            padding: 100px 20px; background: var(--pink); display: flex; align-items: center; justify-content: center; text-align: center;
-            position: relative; clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%); margin-top: -2px; z-index: 5;
-        }
-        .delivery-content { max-width: 800px; color: white; }
-        .delivery-content h2 { font-size: 5rem; margin-bottom: 20px; text-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
-        .btn-group { display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
-        .panda-btn, .call-btn { padding: 15px 40px; font-size: 1.2rem; font-weight: bold; border-radius: 50px; text-decoration: none; transition: transform 0.2s; display: inline-block; }
-        .panda-btn { background: white; color: var(--pink); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .call-btn { background: transparent; color: white; border: 2px solid white; }
-        .panda-btn:hover, .call-btn:hover { transform: scale(1.05); }
+.view-all-container {
+text-align: center;
+margin-top: 60px;
+width: 100%;
+}
 
-        /* --- FOOTER --- */
-        footer { text-align: center; padding: 80px 20px; background-color: var(--black); color: #666; font-size: 0.9rem; }
-        .footer-logo { font-size: 3rem; color: white; font-family: 'Anton'; margin-bottom: 20px; display: block;}
+.view-all-btn {
+display: inline-block;
+padding: 15px 40px;
+border: 2px solid var(--red);
+color: var(--white);
+font-family: 'Oswald', sans-serif;
+font-size: 1.2rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+text-decoration: none;
+transition: 0.3s;
+}
 
-        /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 900px) {
-            .about-section { grid-template-columns: 1fr; padding: 80px 5%; }
-            .about-img { height: 300px; order: -1; }
-            .about-text h2 { font-size: 3rem; }
-        }
+.view-all-btn:hover {
+background: var(--red);
+color: white;
+box-shadow: 0 0 20px rgba(217, 4, 41, 0.4);
+}
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hamburger { display: block; }
-            .hero-title { font-size: 15vw; }
-            .delivery-content h2 { font-size: 3rem; }
-            .review-card { min-width: 300px; }
-            .delivery-section { clip-path: polygon(0 5%, 100% 0, 100% 95%, 0% 100%); }
-            
-            /* Mobile Crowd Favourites Fix */
-            .menu-flex-container { flex-direction: column; align-items: center; }
-            .menu-card { width: 100%; max-width: 100%; }
-        }
-    </style>
+/* --- REVIEWS --- */
+.reviews-section { padding: 100px 0; background: var(--dark-gray); overflow: hidden; }
+.review-track-wrapper { width: 100%; overflow-x: hidden; }
+.review-track { display: flex; gap: 30px; padding-left: 5%; width: max-content; }
+.review-card { background: #222; padding: 40px; min-width: 350px; border-left: 4px solid var(--red); }
+.stars { color: var(--yellow); margin-bottom: 15px; }
+.review-text { font-size: 1.1rem; line-height: 1.5; font-style: italic; color: #ddd; }
+.reviewer { margin-top: 20px; font-weight: bold; font-family: 'Oswald', sans-serif; letter-spacing: 1px; color: var(--white); }
+
+/* --- STATS --- */
+.stats-section { padding: 80px 5%; background: linear-gradient(to right, #111, #0a0a0a); border-top: 1px solid #333; border-bottom: 1px solid #333; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; text-align: center; }
+.stat-item h3 { font-size: 4rem; color: var(--red); margin-bottom: 10px; line-height: 1; }
+.stat-item p { font-family: 'Oswald', sans-serif; letter-spacing: 2px; color: #888; font-size: 1.1rem; text-transform: uppercase; }
+
+/* --- DELIVERY --- */
+.delivery-section {
+padding: 100px 20px; background: var(--pink); display: flex; align-items: center; justify-content: center; text-align: center;
+position: relative; clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%); margin-top: -2px; z-index: 5;
+}
+.delivery-content { max-width: 800px; color: white; }
+.delivery-content h2 { font-size: 5rem; margin-bottom: 20px; text-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
+.btn-group { display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
+.panda-btn, .call-btn { padding: 15px 40px; font-size: 1.2rem; font-weight: bold; border-radius: 50px; text-decoration: none; transition: transform 0.2s; display: inline-block; }
+.panda-btn { background: white; color: var(--pink); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.call-btn { background: transparent; color: white; border: 2px solid white; }
+.panda-btn:hover, .call-btn:hover { transform: scale(1.05); }
+
+/* --- FOOTER --- */
+footer { text-align: center; padding: 80px 20px; background-color: var(--black); color: #666; font-size: 0.9rem; }
+.footer-logo { font-size: 3rem; color: white; font-family: 'Anton'; margin-bottom: 20px; display: block;}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 900px) {
+.about-section { grid-template-columns: 1fr; padding: 80px 5%; }
+.about-img { height: 300px; order: -1; }
+.about-text h2 { font-size: 3rem; }
+}
+
+@media (max-width: 768px) {
+.nav-links { display: none; }
+.hamburger { display: block; }
+.hero-title { font-size: 15vw; }
+.delivery-content h2 { font-size: 3rem; }
+.delivery-section { clip-path: polygon(0 5%, 100% 0, 100% 95%, 0% 100%); }
+
+.menu-flex-container { flex-direction: column; align-items: center; }
+.menu-card { width: 100%; max-width: 100%; }
+
+/* --- MOBILE FIX FOR REVIEWS --- */
+.review-track-wrapper {
+overflow-x: auto; /* Enables native swiping */
+scroll-snap-type: x mandatory;
+padding-bottom: 20px;
+scrollbar-width: none; /* Hides scrollbar on firefox */
+}
+.review-track-wrapper::-webkit-scrollbar { display: none; } /* Hides scrollbar on webkit */
+.review-track {
+gap: 20px;
+padding-left: 5%;
+padding-right: 5%;
+}
+.review-card {
+min-width: 85vw; /* Almost full width so user sees there's more to swipe */
+scroll-snap-align: center; /* Snaps card to center */
+padding: 30px;
+}
+}
+</style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo-group">
-            <img src="logo.JPG" alt="Rangila Logo" class="logo-img">
-            <span class="logo-text">RANGILA BURGER</span>
-        </a>
-        
-        <div class="nav-links">
-            <a href="menu.html" class="nav-link">Full Menu</a>
-            <a href="#about" class="nav-link">About Us</a>
-            <a href="contact.html" class="nav-cta">Contact Us</a>
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
+<nav>
+<a href="#" class="logo-group">
+<img src="logo.JPG" alt="Rangila Logo" class="logo-img">
+<span class="logo-text">RANGILA BURGER</span>
+</a>
 
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="close-btn" onclick="toggleMenu()">&times;</div>
-        <a href="menu.html" class="mobile-link" onclick="toggleMenu()">Full Menu</a>
-        <a href="#about" class="mobile-link" onclick="toggleMenu()">About Us</a>
-        <a href="contact.html" class="mobile-link" onclick="toggleMenu()">Contact Us</a>
-    </div>
+<div class="nav-links">
+<a href="menu.html" class="nav-link">Full Menu</a>
+<a href="#about" class="nav-link">About Us</a>
+<a href="contact.html" class="nav-cta">Contact Us</a>
+</div>
+<div class="hamburger" onclick="toggleMenu()">
+<i class="fas fa-bars"></i>
+</div>
+</nav>
 
-    <header class="hero">
-        <div class="hero-img-container">
-            <img src="unnamed.webp" alt="Rangila Burger" class="hero-img">
-        </div>
-        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9));"></div>
-        <div class="hero-content">
-            <span class="hero-subtitle">ESTABLISHED 1985</span>
-            <h1 class="hero-title">THE LEGEND<br><span style="color:var(--red)">OF LAHORE</span></h1>
-        </div>
-    </header>
+<div class="mobile-menu" id="mobileMenu">
+<div class="close-btn" onclick="toggleMenu()">&times;</div>
+<a href="menu.html" class="mobile-link" onclick="toggleMenu()">Full Menu</a>
+<a href="#about" class="mobile-link" onclick="toggleMenu()">About Us</a>
+<a href="contact.html" class="mobile-link" onclick="toggleMenu()">Contact Us</a>
+</div>
 
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span class="marquee-item">Mall Road Legend • Open Till 2 AM • 100% Beef • Desi Smash Burger • </span>
-            <span class="marquee-item">Mall Road Legend • Open Till 2 AM • 100% Beef • Desi Smash Burger • </span>
-            <span class="marquee-item">Mall Road Legend • Open Till 2 AM • 100% Beef • Desi Smash Burger • </span>
-        </div>
-    </div>
+<header class="hero">
+<div class="hero-img-container">
+<img src="unnamed.webp" alt="Rangila Burger" class="hero-img">
+</div>
+<div style="position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9));"></div>
+<div class="hero-content">
+<span class="hero-subtitle">ESTABLISHED 1985</span>
+<h1 class="hero-title">THE LEGEND<br><span style="color:var(--red)">OF LAHORE</span></h1>
+</div>
+</header>
 
-    <section class="about-section" id="about">
-        <div class="about-text">
-            <p style="color:var(--red); letter-spacing:2px; font-weight:bold;">SINCE 1985</p>
-            <h2>WHO WE ARE??</h2>
-            <p>We are the guardians of Lahore's fast food history. Rangila Burger began with a<span class="about-highlight"> simple cart and a dream.</span></p>
-            <p>40 years later, we are a Mall Road institution. We don't just flip burgers; we craft nostalgia. Our "desi-style" smash patties and secret spices have fed generations. From the chaos of the 80s to the modern era, our taste has never changed.</p>
-            <p>Authentic. Spicy. <span class="about-highlight">Rangila.</span></p>
-        </div>
-        <div class="about-img"></div>
-    </section>
+<div class="marquee-container">
+<div class="marquee-content">
+<span class="marquee-item">Mall Road Legend • Open Till 2 AM • 100% Beef • Desi Smash Burger • </span>
+<span class="marquee-item">Mall Road Legend • Open Till 2 AM • 100% Beef • Desi Smash Burger • </span>
+<span class="marquee-item">Mall Road Legend • Open Till 2 AM • 100% Beef • Desi Smash Burger • </span>
+</div>
+</div>
 
-    <section class="menu-preview">
-        <div class="section-header">
-            <p>The Heavy Hitters</p>
-            <h2>Crowd Favorites</h2>
-        </div>
-        
-        <div class="menu-flex-container">
-            <div class="menu-card">
-                <div class="menu-img-box">
-                    <img src="ddb.png" alt="Double Decker">
-                </div>
-                <div class="menu-info">
-                    <h3 class="menu-title">Double Decker</h3>
-                    <span class="menu-price">Rs. 640</span>
-                    <p class="menu-desc">The King. Double beef patties smashed to perfection, topped with a fluffy omelette.</p>
-                </div>
-            </div>
-            <div class="menu-card">
-                <div class="menu-img-box">
-                    <img src="sudani.png" alt="Sudani Sandwich">
-                </div>
-                <div class="menu-info">
-                    <h3 class="menu-title">Sudani Sandwich</h3>
-                    <span class="menu-price">Rs. 540</span>
-                    <p class="menu-desc">A complete meal. Signature chicken patty stacked with two omelettes and two vegetable cutlets.</p>
-                </div>
-            </div>
-            <div class="menu-card">
-                <div class="menu-img-box">
-                    <img src="soup.png" alt="19-B Soup">
-                </div>
-                <div class="menu-info">
-                    <h3 class="menu-title">19-B Soup</h3>
-                    <span class="menu-price">Rs. 850 &#40;Medium&#41;</span>
-                    <p class="menu-desc">A rich, velvety broth loaded with tender chicken, prawns, and black mushrooms. Served piping hot.</p>
-                </div>
-            </div>
-            <div class="menu-card">
-                <div class="menu-img-box">
-                    <img src="fish.png" alt="Finger Fish">
-                </div>
-                <div class="menu-info">
-                    <h3 class="menu-title">Finger Fish</h3>
-                    <span class="menu-price">Rs. 950</span>
-                    <p class="menu-desc">Premium fillets fried to golden perfection. Served with Masala Fries</p>
-                </div>
-            </div>
-        </div>
+<section class="about-section" id="about">
+<div class="about-text">
+<p style="color:var(--red); letter-spacing:2px; font-weight:bold;">SINCE 1985</p>
+<h2>WHO WE ARE??</h2>
+<p>We are the guardians of Lahore's fast food history. Rangila Burger began with a<span class="about-highlight"> simple cart and a dream.</span></p>
+<p>40 years later, we are a Mall Road institution. We don't just flip burgers; we craft nostalgia. Our "desi-style" smash patties and secret spices have fed generations. From the chaos of the 80s to the modern era, our taste has never changed.</p>
+<p>Authentic. Spicy. <span class="about-highlight">Rangila.</span></p>
+</div>
+<div class="about-img"></div>
+</section>
 
-        <div class="view-all-container">
-            <a href="menu.html" class="view-all-btn">View Full Menu</a>
-        </div>
-    </section>
+<section class="menu-preview">
+<div class="section-header">
+<p>The Heavy Hitters</p>
+<h2>Crowd Favorites</h2>
+</div>
 
-    <section class="reviews-section" id="reviews-section">
-        <div class="section-header">
-            <p>What The People Say</p>
-            <h2>Wall of Love</h2>
-        </div>
-        <div class="review-track-wrapper">
-            <div class="review-track">
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"Me and my family have been visiting this place since my childhood. The only food point where taste buds keep on realizing your memory."</p>
-                    <div class="reviewer">HAMMAD MALIK</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"Really enjoyed a double chicken burger here… the chicken was nicely spicy and well made.. would easily recommend."</p>
-                    <div class="reviewer">KEITH KLEIN</div>
-                </div>
-                 <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"It has been one of the most famous burger shops. Best taste with economical prices. Must try the finger fish in winter!"</p>
-                    <div class="reviewer">MUHAMMAD BILAL</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"Its was a 10 / 10 rangila has finally leveled it up. One of the oldest burger brands in Lahore."</p>
-                    <div class="reviewer">ALI IRFAN</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="menu-flex-container">
+<div class="menu-card">
+<div class="menu-img-box">
+<img src="ddb.png" alt="Double Decker">
+</div>
+<div class="menu-info">
+<h3 class="menu-title">Double Decker</h3>
+<span class="menu-price">Rs. 640</span>
+<p class="menu-desc">The King. Double beef patties smashed to perfection, topped with a fluffy omelette.</p>
+</div>
+</div>
+<div class="menu-card">
+<div class="menu-img-box">
+<img src="sudani.png" alt="Sudani Sandwich">
+</div>
+<div class="menu-info">
+<h3 class="menu-title">Sudani Sandwich</h3>
+<span class="menu-price">Rs. 540</span>
+<p class="menu-desc">A complete meal. Signature chicken patty stacked with two omelettes and two vegetable cutlets.</p>
+</div>
+</div>
+<div class="menu-card">
+<div class="menu-img-box">
+<img src="soup.png" alt="19-B Soup">
+</div>
+<div class="menu-info">
+<h3 class="menu-title">19-B Soup</h3>
+<span class="menu-price">Rs. 850 &#40;Medium&#41;</span>
+<p class="menu-desc">A rich, velvety broth loaded with tender chicken, prawns, and black mushrooms. Served piping hot.</p>
+</div>
+</div>
+<div class="menu-card">
+<div class="menu-img-box">
+<img src="fish.png" alt="Finger Fish">
+</div>
+<div class="menu-info">
+<h3 class="menu-title">Finger Fish</h3>
+<span class="menu-price">Rs. 950</span>
+<p class="menu-desc">Premium fillets fried to golden perfection. Served with Masala Fries</p>
+</div>
+</div>
+</div>
 
-    <section class="stats-section">
-        <div class="section-header">
-            <h2 style="font-size: 2.5rem;">The Numbers Don't Lie</h2>
-        </div>
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3 class="counter" data-target="40">0</h3>
-                <p>Years Serving</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="counter" data-target="100">0</h3>
-                <p>% Pure Beef</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="counter" data-target="2">0</h3>
-                <p>AM Closing Time</p>
-            </div>
-        </div>
-    </section>
+<div class="view-all-container">
+<a href="menu.html" class="view-all-btn">View Full Menu</a>
+</div>
+</section>
 
-    <section class="delivery-section" id="contact">
-        <div class="delivery-content">
-            <i class="fas fa-motorcycle" style="font-size: 4rem; margin-bottom: 20px;"></i>
-            <h2>NIGHT IN?</h2>
-            <p style="font-size: 1.5rem;">Craving the Sudani Sandwich but can't leave the house?</p>
-            
-            <div class="btn-group">
-                <a href="https://www.foodpanda.pk/restaurant/v7rb/rangila-burger" target="_blank" class="panda-btn">ORDER FOODPANDA</a>
-                <a href="tel:+923004240422" class="call-btn"><i class="fas fa-phone"></i> CALL US DIRECT</a>
-            </div>
-        </div>
-    </section>
+<section class="reviews-section" id="reviews-section">
+<div class="section-header">
+<p>What The People Say</p>
+<h2>Wall of Love</h2>
+</div>
+<div class="review-track-wrapper">
+<div class="review-track">
+<div class="review-card">
+<div class="stars">★★★★★</div>
+<p class="review-text">"Me and my family have been visiting this place since my childhood. The only food point where taste buds keep on realizing your memory."</p>
+<div class="reviewer">HAMMAD MALIK</div>
+</div>
+<div class="review-card">
+<div class="stars">★★★★★</div>
+<p class="review-text">"Really enjoyed a double chicken burger here… the chicken was nicely spicy and well made.. would easily recommend."</p>
+<div class="reviewer">KEITH KLEIN</div>
+</div>
+<div class="review-card">
+<div class="stars">★★★★★</div>
+<p class="review-text">"It has been one of the most famous burger shops. Best taste with economical prices. Must try the finger fish in winter!"</p>
+<div class="reviewer">MUHAMMAD BILAL</div>
+</div>
+<div class="review-card">
+<div class="stars">★★★★★</div>
+<p class="review-text">"Its was a 10 / 10 rangila has finally leveled it up. One of the oldest burger brands in Lahore."</p>
+<div class="reviewer">ALI IRFAN</div>
+</div>
+</div>
+</div>
+</section>
 
-    <footer>
-        <span class="footer-logo">RANGILA</span>
-        <p>Ground Floor, Imtiaz Plaza, 85-Mall Road, Lahore</p>
-        <p style="color: var(--yellow); font-size: 1.2rem; margin-top: 10px; margin-bottom: 20px;">+92 300 4240422</p>
-        <p>© 2026 Rangila Burger. All rights reserved.</p>
-    </footer>
+<section class="stats-section">
+<div class="section-header">
+<h2 style="font-size: 2.5rem;">The Numbers Don't Lie</h2>
+</div>
+<div class="stats-grid">
+<div class="stat-item">
+<h3 class="counter" data-target="40">0</h3>
+<p>Years Serving</p>
+</div>
+<div class="stat-item">
+<h3 class="counter" data-target="100">0</h3>
+<p>% Pure Beef</p>
+</div>
+<div class="stat-item">
+<h3 class="counter" data-target="2">0</h3>
+<p>AM Closing Time</p>
+</div>
+</div>
+</section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<section class="delivery-section" id="contact">
+<div class="delivery-content">
+<i class="fas fa-motorcycle" style="font-size: 4rem; margin-bottom: 20px;"></i>
+<h2>NIGHT IN?</h2>
+<p style="font-size: 1.5rem;">Craving the Sudani Sandwich but can't leave the house?</p>
 
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
+<div class="btn-group">
+<a href="https://www.foodpanda.pk/restaurant/v7rb/rangila-burger" target="_blank" class="panda-btn">ORDER FOODPANDA</a>
+<a href="tel:+923004240422" class="call-btn"><i class="fas fa-phone"></i> CALL US DIRECT</a>
+</div>
+</div>
+</section>
 
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
-        }
+<footer>
+<span class="footer-logo">RANGILA</span>
+<p>Ground Floor, Imtiaz Plaza, 85-Mall Road, Lahore</p>
+<p style="color: var(--yellow); font-size: 1.2rem; margin-top: 10px; margin-bottom: 20px;">+92 300 4240422</p>
+<p>© 2026 Rangila Burger. All rights reserved.</p>
+</footer>
 
-        const tl = gsap.timeline();
-        tl.to(".hero-subtitle", { opacity: 1, duration: 1, delay: 0.5 })
-          .to(".hero-title", { opacity: 1, y: 0, duration: 1, ease: "power4.out" }, "-=0.5");
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-        gsap.to(".hero-img", {
-            scale: 1,
-            scrollTrigger: {
-                trigger: ".hero",
-                start: "top top",
-                end: "bottom top",
-                scrub: true
-            }
-        });
+<script>
+gsap.registerPlugin(ScrollTrigger);
 
-        gsap.to(".marquee-content", {
-            xPercent: -50,
-            repeat: -1,
-            duration: 20,
-            ease: "linear"
-        });
+function toggleMenu() {
+const menu = document.getElementById('mobileMenu');
+menu.classList.toggle('active');
+}
 
-        gsap.from(".about-text", {
-            x: -50, opacity: 0, duration: 1,
-            scrollTrigger: { trigger: ".about-section", start: "top 70%" }
-        });
-        gsap.from(".about-img", {
-            x: 50, opacity: 0, duration: 1,
-            scrollTrigger: { trigger: ".about-section", start: "top 70%" }
-        });
+const tl = gsap.timeline();
+tl.to(".hero-subtitle", { opacity: 1, duration: 1, delay: 0.5 })
+.to(".hero-title", { opacity: 1, y: 0, duration: 1, ease: "power4.out" }, "-=0.5");
 
-        // Crowd Favourites - Visible by default
-        gsap.from(".menu-card", {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: ".menu-preview",
-                start: "top 80%" 
-            }
-        });
+gsap.to(".hero-img", {
+scale: 1,
+scrollTrigger: {
+trigger: ".hero",
+start: "top top",
+end: "bottom top",
+scrub: true
+}
+});
 
-        gsap.to(".review-track", {
-            xPercent: -50,
-            ease: "none",
-            scrollTrigger: { trigger: ".reviews-section", start: "top bottom", end: "bottom top", scrub: 1 }
-        });
+gsap.to(".marquee-content", {
+xPercent: -50,
+repeat: -1,
+duration: 20,
+ease: "linear"
+});
 
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            gsap.to(counter, {
-                innerHTML: target,
-                duration: 2,
-                snap: { innerHTML: 1 },
-                scrollTrigger: { trigger: ".stats-section", start: "top 80%" }
-            });
-        });
+gsap.from(".about-text", {
+x: -50, opacity: 0, duration: 1,
+scrollTrigger: { trigger: ".about-section", start: "top 70%" }
+});
+gsap.from(".about-img", {
+x: 50, opacity: 0, duration: 1,
+scrollTrigger: { trigger: ".about-section", start: "top 70%" }
+});
 
-        gsap.from(".btn-group", {
-            scale: 0.8, opacity: 0, duration: 0.5,
-            scrollTrigger: { trigger: ".delivery-section", start: "top 60%" }
-        });
-    </script>
+gsap.from(".menu-card", {
+y: 50,
+opacity: 0,
+duration: 0.8,
+stagger: 0.2,
+scrollTrigger: {
+trigger: ".menu-preview",
+start: "top 80%"
+}
+});
+
+// --- MOBILE JS FIX FOR REVIEWS ---
+// Using MatchMedia so the horizontal slide animation only applies to desktop
+let mm = gsap.matchMedia();
+
+mm.add("(min-width: 769px)", () => {
+gsap.to(".review-track", {
+xPercent: -50,
+ease: "none",
+scrollTrigger: {
+trigger: ".reviews-section",
+start: "top bottom",
+end: "bottom top",
+scrub: 1
+}
+});
+});
+
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+const target = +counter.getAttribute('data-target');
+gsap.to(counter, {
+innerHTML: target,
+duration: 2,
+snap: { innerHTML: 1 },
+scrollTrigger: { trigger: ".stats-section", start: "top 80%" }
+});
+});
+
+gsap.from(".btn-group", {
+scale: 0.8, opacity: 0, duration: 0.5,
+scrollTrigger: { trigger: ".delivery-section", start: "top 60%" }
+});
+</script>
 </body>
 </html>
+
