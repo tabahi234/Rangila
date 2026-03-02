@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- RESET & VARIABLES --- */
+
         :root {
             --red: #D90429;
             --yellow: #FFC300;
@@ -31,7 +31,6 @@
 
         h1, h2, h3 { font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- NAV --- */
         nav {
             position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;
             padding: 20px 5%; z-index: 1000; background: rgba(13, 13, 13, 0.95); backdrop-filter: blur(10px);
@@ -54,13 +53,12 @@ border: 2px solid var(--red);
         .nav-cta:hover { background: var(--yellow); }
         .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
         
-        /* Mobile Menu */
+
         .mobile-menu { position: fixed; top: 0; right: 0; width: 100%; height: 100vh; background: var(--black); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 40px; z-index: 999; transform: translateX(100%); transition: transform 0.4s ease-in-out; }
         .mobile-menu.active { transform: translateX(0); }
         .mobile-link { font-family: 'Anton', sans-serif; font-size: 2rem; color: white; text-decoration: none; }
         .close-btn { position: absolute; top: 25px; right: 25px; font-size: 2rem; cursor: pointer; }
 
-        /* --- HEADER --- */
         .page-header {
             height: 50vh;
             background: linear-gradient(to bottom, rgba(0,0,0,0.6), var(--black)), url('conta.png');
@@ -73,7 +71,7 @@ border: 2px solid var(--red);
         }
         .page-title { font-size: 5rem; text-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;}
 
-        /* --- CONTACT CARDS (SAFE MODE) --- */
+       
         .contact-section { padding: 80px 5%; background: var(--black); }
         .contact-flex-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1300px; margin: 0 auto; }
 
@@ -96,7 +94,6 @@ border: 2px solid var(--red);
         .btn-review:hover { background: #4285F4; border-color: #4285F4; }
         .btn-insta:hover { background: #E1306C; border-color: #E1306C; }
 
-        /* --- MAP SECTION --- */
         .map-section { display: flex; flex-wrap: wrap; background: #111; margin-top: 50px; }
         .map-info { flex: 1; padding: 80px 5%; min-width: 300px; display: flex; flex-direction: column; justify-content: center; }
         .map-frame { flex: 1; min-width: 300px; min-height: 500px; filter: grayscale(100%) invert(92%) contrast(83%); }
@@ -106,7 +103,7 @@ border: 2px solid var(--red);
         .info-content h4 { font-family: 'Oswald'; font-size: 1.3rem; margin-bottom: 5px; color: var(--white); }
         .info-content p { color: #888; font-size: 1.1rem; line-height: 1.5; }
 
-        /* --- FOOTER --- */
+       
         footer { text-align: center; padding: 80px 20px; background-color: #050505; color: #666; }
 
         @media (max-width: 768px) {
@@ -212,3 +209,4 @@ border: 2px solid var(--red);
     </script>
 </body>
 </html>
+
