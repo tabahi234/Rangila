@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="description" content="The legendary Rangila Burger on Mall Road, Lahore. Serving authentic desi smash burgers, the famous Sudani Sandwich, and 19-B Soup since 1985. Open till 2 AM.">
+    <meta name="description" content="The legendary Rangila Burger on Mall Road, Lahore. Serving authentic desi smash burgers, the famous Sudani Sandwich, and 19-B Soup since 1985. Open till 2 AM.">
 <meta name="keywords" content="Rangila Burger, best burger in Lahore, Mall Road food, Anda Shami, double decker burger, late night food Lahore, desi burger, 19-B soup, Finger Fish">
 <meta name="author" content="Rangila Burger">
 
@@ -9,7 +9,6 @@
 <meta property="og:title" content="Rangila Burger | Since 1985">
 <meta property="og:description" content="The legendary taste of Lahore. View our full menu and order directly.">
 <meta property="og:image" content="unnamed.webp">
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rangila Burger | Since 1985</title>
@@ -19,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* --- RESET & VARIABLES --- */
+
 :root {
 --red: #D90429;
 --yellow: #FFC300;
@@ -40,12 +39,12 @@ overflow-x: hidden;
 
 h1, h2, h3 { font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
-/* --- NAVIGATION --- */
+
 nav {
 position: fixed;
 top: 0; width: 100%;
 display: flex; justify-content: space-between; align-items: center;
-padding: 15px 5%; /* Slight adjustment for logo size */
+padding: 15px 5%;
 z-index: 1000;
 background: rgba(13, 13, 13, 0.95);
 backdrop-filter: blur(10px);
@@ -54,13 +53,12 @@ border-bottom: 1px solid rgba(255,255,255,0.1);
 
 .logo-group { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
 
-/* NEW LOGO STYLING */
 .logo-img {
-width: 55px; /* Adjust size here */
-height: 55px; /* Keep height same as width */
-border-radius: 50%; /* Makes it a circle */
-object-fit: cover; /* Ensures image doesn't stretch */
-border: 2px solid var(--red); /* Optional: Adds a cool border */
+width: 55px;
+height: 55px;
+border-radius: 50%;
+object-fit: cover;
+border: 2px solid var(--red);
 }
 
 .logo-text { font-family: 'Anton', sans-serif; font-size: 1.5rem; letter-spacing: 1px; }
@@ -73,7 +71,6 @@ border: 2px solid var(--red); /* Optional: Adds a cool border */
 
 .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
 
-/* Mobile Menu */
 .mobile-menu {
 position: fixed; top: 0; right: 0; width: 100%; height: 100vh;
 background: var(--black); display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -83,7 +80,7 @@ gap: 40px; z-index: 999; transform: translateX(100%); transition: transform 0.4s
 .mobile-link { font-family: 'Anton', sans-serif; font-size: 2rem; color: white; text-decoration: none; }
 .close-btn { position: absolute; top: 25px; right: 25px; font-size: 2rem; cursor: pointer; }
 
-/* --- HERO --- */
+
 .hero {
 height: 85vh; display: flex; align-items: center; justify-content: center;
 position: relative; overflow: hidden; margin-top: 70px;
@@ -94,7 +91,7 @@ position: relative; overflow: hidden; margin-top: 70px;
 .hero-title { font-size: 10vw; line-height: 0.9; margin-bottom: 20px; transform: translateY(50px); opacity: 0; }
 .hero-subtitle { font-size: 1.2rem; letter-spacing: 5px; text-transform: uppercase; color: var(--yellow); opacity: 0; margin-bottom: 15px; display: block; }
 
-/* --- MARQUEE --- */
+
 .marquee-container {
 background: var(--red); padding: 15px 0; overflow: hidden; white-space: nowrap;
 position: relative; z-index: 10; transform: rotate(-1deg) scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -102,7 +99,7 @@ position: relative; z-index: 10; transform: rotate(-1deg) scale(1.05); box-shado
 .marquee-content { display: inline-block; }
 .marquee-item { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.5rem; margin: 0 30px; color: white; text-transform: uppercase; }
 
-/* --- ABOUT SECTION --- */
+
 .about-section {
 padding: 120px 10%; background-color: var(--black); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
 }
@@ -116,7 +113,7 @@ border-radius: 5px; filter: grayscale(100%); transition: 0.5s;
 }
 .about-img:hover { filter: grayscale(0%); }
 
-/* --- CROWD FAVORITES --- */
+
 .menu-preview {
 padding: 100px 5%;
 background: #111;
@@ -184,22 +181,37 @@ color: white;
 box-shadow: 0 0 20px rgba(217, 4, 41, 0.4);
 }
 
-/* --- REVIEWS --- */
-.reviews-section { padding: 100px 0; background: var(--dark-gray); overflow: hidden; }
-.review-track-wrapper { width: 100%; overflow-x: hidden; }
-.review-track { display: flex; gap: 30px; padding-left: 5%; width: max-content; }
-.review-card { background: #222; padding: 40px; min-width: 350px; border-left: 4px solid var(--red); }
+
+.reviews-section { padding: 100px 0; background: var(--dark-gray); }
+.review-track-wrapper { width: 100%; max-width: 1200px; margin: 0 auto; }
+
+.review-track {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 30px;
+padding: 0 5%;
+}
+
+.review-card {
+background: #222;
+padding: 40px;
+border-left: 4px solid var(--red);
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
 .stars { color: var(--yellow); margin-bottom: 15px; }
-.review-text { font-size: 1.1rem; line-height: 1.5; font-style: italic; color: #ddd; }
+.review-text { font-size: 1.1rem; line-height: 1.6; font-style: italic; color: #ddd; }
 .reviewer { margin-top: 20px; font-weight: bold; font-family: 'Oswald', sans-serif; letter-spacing: 1px; color: var(--white); }
 
-/* --- STATS --- */
+
 .stats-section { padding: 80px 5%; background: linear-gradient(to right, #111, #0a0a0a); border-top: 1px solid #333; border-bottom: 1px solid #333; }
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; text-align: center; }
 .stat-item h3 { font-size: 4rem; color: var(--red); margin-bottom: 10px; line-height: 1; }
 .stat-item p { font-family: 'Oswald', sans-serif; letter-spacing: 2px; color: #888; font-size: 1.1rem; text-transform: uppercase; }
 
-/* --- DELIVERY --- */
+
 .delivery-section {
 padding: 100px 20px; background: var(--pink); display: flex; align-items: center; justify-content: center; text-align: center;
 position: relative; clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%); margin-top: -2px; z-index: 5;
@@ -212,11 +224,9 @@ position: relative; clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%); margin
 .call-btn { background: transparent; color: white; border: 2px solid white; }
 .panda-btn:hover, .call-btn:hover { transform: scale(1.05); }
 
-/* --- FOOTER --- */
 footer { text-align: center; padding: 80px 20px; background-color: var(--black); color: #666; font-size: 0.9rem; }
 .footer-logo { font-size: 3rem; color: white; font-family: 'Anton'; margin-bottom: 20px; display: block;}
 
-/* --- RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 900px) {
 .about-section { grid-template-columns: 1fr; padding: 80px 5%; }
 .about-img { height: 300px; order: -1; }
@@ -232,25 +242,6 @@ footer { text-align: center; padding: 80px 20px; background-color: var(--black);
 
 .menu-flex-container { flex-direction: column; align-items: center; }
 .menu-card { width: 100%; max-width: 100%; }
-
-/* --- MOBILE FIX FOR REVIEWS --- */
-.review-track-wrapper {
-overflow-x: auto; /* Enables native swiping */
-scroll-snap-type: x mandatory;
-padding-bottom: 20px;
-scrollbar-width: none; /* Hides scrollbar on firefox */
-}
-.review-track-wrapper::-webkit-scrollbar { display: none; } /* Hides scrollbar on webkit */
-.review-track {
-gap: 20px;
-padding-left: 5%;
-padding-right: 5%;
-}
-.review-card {
-min-width: 85vw; /* Almost full width so user sees there's more to swipe */
-scroll-snap-align: center; /* Snaps card to center */
-padding: 30px;
-}
 }
 </style>
 </head>
@@ -486,21 +477,16 @@ start: "top 80%"
 }
 });
 
-// --- MOBILE JS FIX FOR REVIEWS ---
-// Using MatchMedia so the horizontal slide animation only applies to desktop
-let mm = gsap.matchMedia();
 
-mm.add("(min-width: 769px)", () => {
-gsap.to(".review-track", {
-xPercent: -50,
-ease: "none",
+gsap.from(".review-card", {
+y: 50,
+opacity: 0,
+duration: 0.8,
+stagger: 0.2,
 scrollTrigger: {
 trigger: ".reviews-section",
-start: "top bottom",
-end: "bottom top",
-scrub: 1
+start: "top 80%"
 }
-});
 });
 
 const counters = document.querySelectorAll('.counter');
@@ -521,5 +507,4 @@ scrollTrigger: { trigger: ".delivery-section", start: "top 60%" }
 </script>
 </body>
 </html>
-
 
