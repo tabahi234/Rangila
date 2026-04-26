@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-
+        /* --- RESET & VARIABLES --- */
         :root {
             --red: #D90429;
             --yellow: #FFC300;
@@ -31,34 +31,109 @@
 
         h1, h2, h3 { font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
+        /* --- NAV --- */
         nav {
             position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;
             padding: 20px 5%; z-index: 1000; background: rgba(13, 13, 13, 0.95); backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 32px rgba(217, 4, 41, 0.1);
         }
+        
         .logo-img {
-width: 55px;
-height: 55px;
-border-radius: 50%;
-object-fit: cover;
-border: 2px solid var(--red);
-}
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--red);
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(217, 4, 41, 0.3);
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(217, 4, 41, 0.6);
+        }
+        
         .logo-group { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
-        .logo-icon { font-size: 1.5rem; color: var(--red); }
         .logo-text { font-family: 'Anton', sans-serif; font-size: 1.5rem; letter-spacing: 1px; }
+        
         .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-link { text-decoration: none; color: #ccc; font-weight: 500; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
-        .nav-link:hover { color: var(--yellow); }
-        .nav-cta { padding: 8px 20px; background: var(--white); color: var(--black); font-weight: bold; border-radius: 2px; text-transform: uppercase; text-decoration: none; transition: 0.3s; }
-        .nav-cta:hover { background: var(--yellow); }
+        
+        .nav-link { 
+            text-decoration: none; 
+            color: #ccc; 
+            font-weight: 500; 
+            text-transform: uppercase; 
+            font-size: 0.9rem; 
+            transition: 0.3s;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--yellow);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover { 
+            color: var(--yellow);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-cta { 
+            padding: 10px 25px; 
+            background: var(--white); 
+            color: var(--black); 
+            font-weight: bold; 
+            border-radius: 4px; 
+            text-transform: uppercase; 
+            text-decoration: none; 
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+        }
+        
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--yellow);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-cta:hover { 
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 195, 0, 0.3);
+        }
+        
+        .nav-cta:hover::before {
+            left: 0;
+        }
+        
         .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
         
-
+        /* Mobile Menu */
         .mobile-menu { position: fixed; top: 0; right: 0; width: 100%; height: 100vh; background: var(--black); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 40px; z-index: 999; transform: translateX(100%); transition: transform 0.4s ease-in-out; }
         .mobile-menu.active { transform: translateX(0); }
         .mobile-link { font-family: 'Anton', sans-serif; font-size: 2rem; color: white; text-decoration: none; }
         .close-btn { position: absolute; top: 25px; right: 25px; font-size: 2rem; cursor: pointer; }
 
+        /* --- HEADER --- */
         .page-header {
             height: 50vh;
             background: linear-gradient(to bottom, rgba(0,0,0,0.6), var(--black)), url('conta.png');
@@ -68,43 +143,303 @@ border: 2px solid var(--red);
             align-items: center;
             justify-content: center;
             margin-top: 70px;
+            position: relative;
+            overflow: hidden;
         }
-        .page-title { font-size: 5rem; text-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;}
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--red), transparent);
+        }
+        
+        .page-title { 
+            font-size: 5rem; 
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
 
-       
-        .contact-section { padding: 80px 5%; background: var(--black); }
+        /* --- CONTACT CARDS --- */
+        .contact-section { padding: 80px 5%; background: var(--black); position: relative; }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--red), transparent);
+        }
+        
         .contact-flex-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1300px; margin: 0 auto; }
 
         .contact-card {
-            background: #151515; padding: 50px 30px; border-radius: 8px; text-align: center; border-top: 5px solid var(--red);
-            transition: transform 0.3s; flex: 1 1 300px; max-width: 400px; display: flex; flex-direction: column; align-items: center;
+            background: #151515; 
+            padding: 50px 30px; 
+            border-radius: 8px; 
+            text-align: center; 
+            border-top: 5px solid var(--red);
+            transition: all 0.3s ease;
+            flex: 1 1 300px; 
+            max-width: 400px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(217, 4, 41, 0.1);
+            position: relative;
         }
-        .contact-card:hover { transform: translateY(-10px); background: #1a1a1a; }
+        
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--red), transparent);
+            border-radius: 8px 8px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-card:hover { 
+            transform: translateY(-15px); 
+            background: #1a1a1a;
+            box-shadow: 0 20px 50px rgba(217, 4, 41, 0.2);
+        }
+        
+        .contact-card:hover::after {
+            opacity: 1;
+        }
 
-        .card-icon { font-size: 3rem; margin-bottom: 25px; color: var(--white); }
+        .card-icon { font-size: 3rem; margin-bottom: 25px; color: var(--white); transition: 0.3s; }
+        .contact-card:hover .card-icon { transform: scale(1.2) rotate(10deg); }
+        
         .card-title { font-size: 2rem; margin-bottom: 15px; color: var(--yellow); font-family: 'Oswald'; }
         .card-text { color: #aaa; margin-bottom: 30px; line-height: 1.6; font-size: 1rem; max-width: 300px; }
         
         .card-btn {
-            display: inline-block; padding: 15px 35px; border: 1px solid rgba(255,255,255,0.2); color: white;
-            text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s; margin-top: auto;
+            display: inline-block; 
+            padding: 15px 35px; 
+            border: 2px solid rgba(255,255,255,0.3); 
+            color: white;
+            text-decoration: none; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            transition: all 0.3s ease; 
+            margin-top: auto;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            transition: left 0.3s ease;
+            z-index: -1;
         }
 
-        .btn-order:hover { background: var(--pink); border-color: var(--pink); }
-        .btn-review:hover { background: #4285F4; border-color: #4285F4; }
-        .btn-insta:hover { background: #E1306C; border-color: #E1306C; }
+        .btn-order::before { background: var(--pink); }
+        .btn-order:hover { border-color: var(--pink); color: white; transform: translateX(3px); }
+        .btn-order:hover::before { left: 0; }
+        
+        .btn-review::before { background: #4285F4; }
+        .btn-review:hover { border-color: #4285F4; color: white; transform: translateX(3px); }
+        .btn-review:hover::before { left: 0; }
+        
+        .btn-insta::before { background: #E1306C; }
+        .btn-insta:hover { border-color: #E1306C; color: white; transform: translateX(3px); }
+        .btn-insta:hover::before { left: 0; }
+        
+        .btn-tiktok::before { background: #25F4EE; }
+        .btn-tiktok:hover { border-color: #25F4EE; color: #000; transform: translateX(3px); }
+        .btn-tiktok:hover::before { left: 0; }
 
-        .map-section { display: flex; flex-wrap: wrap; background: #111; margin-top: 50px; }
-        .map-info { flex: 1; padding: 80px 5%; min-width: 300px; display: flex; flex-direction: column; justify-content: center; }
-        .map-frame { flex: 1; min-width: 300px; min-height: 500px; filter: grayscale(100%) invert(92%) contrast(83%); }
+        /* --- LOCATION TOGGLE --- */
+        .location-toggle {
+            text-align: center;
+            margin: 60px 0;
+            padding: 30px;
+            background: linear-gradient(to right, rgba(217, 4, 41, 0.1), transparent);
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .location-toggle h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--yellow);
+        }
+        
+        .toggle-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .toggle-btn {
+            padding: 12px 40px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .toggle-btn.active {
+            background: var(--red);
+            border-color: var(--red);
+            box-shadow: 0 0 20px rgba(217, 4, 41, 0.5);
+            transform: scale(1.05);
+        }
+        
+        .toggle-btn:hover {
+            border-color: var(--red);
+            transform: scale(1.05);
+        }
 
-        .info-row { display: flex; gap: 20px; margin-bottom: 30px; align-items: flex-start;}
-        .info-icon { width: 50px; height: 50px; background: var(--red); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; border-radius: 50%; flex-shrink: 0; }
-        .info-content h4 { font-family: 'Oswald'; font-size: 1.3rem; margin-bottom: 5px; color: var(--white); }
-        .info-content p { color: #888; font-size: 1.1rem; line-height: 1.5; }
+        /* --- MAP SECTION --- */
+        .map-section { 
+            display: flex; 
+            flex-wrap: wrap; 
+            background: #111; 
+            margin-top: 50px;
+            position: relative;
+            border-top: 1px solid rgba(217, 4, 41, 0.2);
+            padding-top: 50px;
+        }
+        
+        .map-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--red), transparent);
+        }
+        
+        .map-info { 
+            flex: 1; 
+            padding: 80px 5%; 
+            min-width: 300px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+        }
+        
+        .map-info h2 {
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .map-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--red);
+            border-radius: 2px;
+        }
+        
+        .map-frame { 
+            flex: 1; 
+            min-width: 300px; 
+            min-height: 500px; 
+            filter: grayscale(100%) invert(92%) contrast(83%);
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-       
-        footer { text-align: center; padding: 80px 20px; background-color: #050505; color: #666; }
+        .info-row { 
+            display: flex; 
+            gap: 20px; 
+            margin-bottom: 40px; 
+            align-items: flex-start;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .info-row:hover {
+            border-bottom-color: var(--red);
+            padding-left: 10px;
+        }
+        
+        .info-icon { 
+            width: 50px; 
+            height: 50px; 
+            background: var(--red); 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.2rem; 
+            border-radius: 50%; 
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .info-row:hover .info-icon {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 0 20px rgba(217, 4, 41, 0.5);
+        }
+        
+        .info-content h4 { 
+            font-family: 'Oswald'; 
+            font-size: 1.3rem; 
+            margin-bottom: 5px; 
+            color: var(--white); 
+        }
+        
+        .info-content p { 
+            color: #888; 
+            font-size: 1.1rem; 
+            line-height: 1.5; 
+        }
+        
+        .info-content a {
+            color: var(--yellow);
+            text-decoration: none;
+            transition: 0.3s;
+            border-left: 2px solid var(--red);
+            padding-left: 8px;
+        }
+        
+        .info-content a:hover {
+            color: var(--red);
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            text-align: center; 
+            padding: 80px 20px; 
+            background-color: #050505; 
+            color: #666;
+            border-top: 1px solid rgba(217, 4, 41, 0.2);
+        }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -113,6 +448,8 @@ border: 2px solid var(--red);
             .map-section { flex-direction: column; }
             .contact-flex-container { flex-direction: column; align-items: center; }
             .contact-card { width: 100%; max-width: 100%; }
+            .toggle-buttons { flex-direction: column; }
+            .toggle-btn { width: 100%; }
         }
     </style>
 </head>
@@ -126,7 +463,7 @@ border: 2px solid var(--red);
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
             <a href="menu.html" class="nav-link">Full Menu</a>
-            <a href="#" class="nav-cta">Contact Us</a>
+            <a href="#" class="nav-link">Contact Us</a>
         </div>
         <div class="hamburger" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -164,18 +501,32 @@ border: 2px solid var(--red);
                 <p class="card-text">Slide into our DMs for catering, complaints, or just to send us burger memes.</p>
                 <a href="https://www.instagram.com/rangila_burger" target="_blank" class="card-btn btn-insta">@rangilaburger</a>
             </div>
+            <div class="contact-card">
+                <i class="fab fa-tiktok card-icon" style="color: #25F4EE;"></i>
+                <h3 class="card-title">TRENDING?</h3>
+                <p class="card-text">Watch our latest burger hacks, mukbang moments, and behind-the-scenes kitchen chaos.</p>
+                <a href="https://www.tiktok.com/@rangilaburger" target="_blank" class="card-btn btn-tiktok">@rangilaburger</a>
+            </div>
         </div>
     </section>
 
+    <div class="location-toggle">
+        <h3><i class="fas fa-map-marker-alt"></i> SELECT LOCATION</h3>
+        <div class="toggle-buttons">
+            <button class="toggle-btn active" onclick="switchLocation('mall-road')">Mall Road</button>
+            <button class="toggle-btn" onclick="switchLocation('alrehman')">Al-Rehman Garden</button>
+        </div>
+    </div>
+
     <section class="map-section">
         <div class="map-info">
-            <h2 style="font-size: 3rem; margin-bottom: 40px; line-height: 1;">FIND THE <br><span style="color:var(--red)">FLAVOR</span></h2>
+            <h2>FIND THE <br><span style="color:var(--red)">FLAVOR</span></h2>
             
             <div class="info-row">
                 <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                 <div class="info-content">
-                    <h4>THE NEW SPOT</h4>
-                    <p>Ground Floor, Imtiaz Plaza,<br>85-The Shahrah-e-Quaid-e-Azam (Mall Road), Lahore.</p>
+                    <h4 id="branch-title">MALL ROAD SPOT</h4>
+                    <p id="branch-address">Ground Floor, Imtiaz Plaza,<br>85-The Shahrah-e-Quaid-e-Azam (Mall Road), Lahore.</p>
                 </div>
             </div>
 
@@ -183,7 +534,10 @@ border: 2px solid var(--red);
                 <div class="info-icon"><i class="fas fa-phone"></i></div>
                 <div class="info-content">
                     <h4>CALL US DIRECT</h4>
-                    <p>+92 300 4240422<br>042 36367529</p>
+                    <p>
+                        <a href="tel:+923004240422">+92 300 4240422</a><br>
+                        <a href="tel:042-36367529">042 36367529</a>
+                    </p>
                 </div>
             </div>
 
@@ -196,7 +550,7 @@ border: 2px solid var(--red);
             </div>
         </div>
         
-        <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3399.6814134320775!2d74.3225336!3d31.560356800000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904ad4527ec4d%3A0xd8a51620ef806aa2!2sRangila%20Burgers%20sandwiches%20Chinese%20fryzone!5e0!3m2!1sen!2sru!4v1771676662253!5m2!1sen!2sru" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe id="map-frame" class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3399.6814134320775!2d74.3225336!3d31.560356800000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904ad4527ec4d%3A0xd8a51620ef806aa2!2sRangila%20Burgers%20sandwiches%20Chinese%20fryzone!5e0!3m2!1sen!2sru!4v1771676662253!5m2!1sen!2sru" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </section>
 
     <footer>
@@ -205,8 +559,26 @@ border: 2px solid var(--red);
     </footer>
 
     <script>
-        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+        function toggleMenu() { 
+            document.getElementById('mobileMenu').classList.toggle('active'); 
+        }
+
+        function switchLocation(location) {
+            const buttons = document.querySelectorAll('.toggle-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            if (location === 'mall-road') {
+                buttons[0].classList.add('active');
+                document.getElementById('branch-title').textContent = 'MALL ROAD SPOT';
+                document.getElementById('branch-address').textContent = 'Ground Floor, Imtiaz Plaza,\n85-The Shahrah-e-Quaid-e-Azam (Mall Road), Lahore.';
+                document.getElementById('map-frame').src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3399.6814134320775!2d74.3225336!3d31.560356800000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904ad4527ec4d%3A0xd8a51620ef806aa2!2sRangila%20Burgers%20sandwiches%20Chinese%20fryzone!5e0!3m2!1sen!2sru!4v1771676662253!5m2!1sen!2sru';
+            } else if (location === 'alrehman') {
+                buttons[1].classList.add('active');
+                document.getElementById('branch-title').textContent = 'AL-REHMAN GARDEN SPOT';
+                document.getElementById('branch-address').textContent = 'H6QR+RJC, Al Rehman Garden Phase 2,\nLahore, Pakistan.';
+                document.getElementById('map-frame').src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3398.616518097931!2d74.2367649078369!3d31.589562357926052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39191d0058cdf7c7%3A0xc498e31b1eca4dd8!2sRangila%20Burgers%20Sandwiches%20Chinese%20Fryzone%20(Alrehman%20Gardens%20Branch)!5e0!3m2!1sen!2s!4v1777192635497!5m2!1sen!2s';
+            }
+        }
     </script>
 </body>
 </html>
-
